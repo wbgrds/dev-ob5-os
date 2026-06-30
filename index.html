@@ -98,3 +98,13 @@
   </div>
 </body>
 </html>
+
+<!-- Calendar Scheduling -->
+<div id="cal" style="display:none;"></div>
+
+<script src="google-calendar-scheduling.js"></script>
+<script>
+  window.addEventListener('load', function() {
+    loadSchedulingButton('cal', 'https://cal.com/wbgrds/hotline', 'Rückruf vereinbaren', 'edit_calendar');
+  });
+</script>
