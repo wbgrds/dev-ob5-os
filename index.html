@@ -6,22 +6,6 @@
     <title>Olaf Scharfenberg - WEBGUARDS</title>
     <link rel="stylesheet" href="styles.css" />
     <link href="includes/plugins/google/scheduling-button-script.css" rel="stylesheet">
-    <style>
-      #debug-panel {
-        position: fixed;
-        bottom: 0;
-        left: 0;
-        right: 0;
-        background: #000;
-        color: #0f0;
-        padding: 10px;
-        font-family: monospace;
-        font-size: 12px;
-        max-height: 150px;
-        overflow: auto;
-        z-index: 99999;
-      }
-    </style>
   </head>
   <body>
     <nav>
@@ -63,49 +47,27 @@
           Kontakt
         </a>
       </div>
+      <p style="color: red; margin-top: 20px;">DEBUG: HTML lädt</p>
       <div id="cal"></div>
     </footer>
 
-    <div id="debug-panel"></div>
-
-    <script>
-      const debugLog = [];
-      function debug(msg) {
-        debugLog.push(msg);
-        document.getElementById('debug-panel').textContent = debugLog.join('\n');
-      }
-
-      debug('[1] Script startet...');
-    </script>
-
     <script src="includes/plugins/google/scheduling-button-script.js"></script>
-
     <script>
-      debug('[2] Nach Script-Laden: window.calendar = ' + (typeof window.calendar));
-      
-      document.addEventListener('DOMContentLoaded', function() {
-        debug('[3] DOMContentLoaded');
-        debug('window.calendar.schedulingButton = ' + (typeof window.calendar?.schedulingButton));
-        
-        if (window.calendar && window.calendar.schedulingButton) {
-          debug('[4] Versuche load() zu starten...');
-          try {
-            window.calendar.schedulingButton.load({
-              target: document.getElementById('cal'),
-              url: 'https://cal.com/wbgrds/hotline',
-              label: 'Termin',
-              color: '#039BE5'
-            });
-            debug('[5] load() erfolgreich');
-          } catch(e) {
-            debug('[ERROR] ' + e.message);
-          }
-        } else {
-          debug('[ERROR] window.calendar.schedulingButton existiert nicht');
-          debug('window = ' + (typeof window));
-          debug('window.calendar = ' + (typeof window.calendar));
+      document.write('<p style="color: red;">DEBUG: Script lädt</p>');
+      if (window.calendar) {
+        document.write('<p style="color: green;">DEBUG: window.calendar EXISTS</p>');
+        if (window.calendar.schedulingButton) {
+          document.write('<p style="color: green;">DEBUG: schedulingButton EXISTS</p>');
+          window.calendar.schedulingButton.load({
+            target: document.getElementById('cal'),
+            url: 'https://cal.com/wbgrds/hotline',
+            label: 'Termin',
+            color: '#039BE5'
+          });
         }
-      });
+      } else {
+        document.write('<p style="color: red;">DEBUG: window.calendar MISSING</p>');
+      }
     </script>
   </body>
 </html>
