@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Olaf Scharfenberg - WEBGUARDS</title>
     <link rel="stylesheet" href="styles.css" />
-    <link href="includes/plugins/google/scheduling-button-script.css" rel="stylesheet">
   </head>
   <body>
     <nav>
@@ -46,28 +45,10 @@
         <a href="https://1018.3cx.cloud/callus/#olaf" target="_blank" rel="noopener">
           Kontakt
         </a>
+        <a href="https://cal.com/wbgrds/hotline" target="_blank" rel="noopener">
+          Termin
+        </a>
       </div>
-      <p style="color: red; margin-top: 20px;">DEBUG: HTML lädt</p>
-      <div id="cal"></div>
     </footer>
-
-    <script src="includes/plugins/google/scheduling-button-script.js"></script>
-    <script>
-      document.write('<p style="color: red;">DEBUG: Script lädt</p>');
-      if (window.calendar) {
-        document.write('<p style="color: green;">DEBUG: window.calendar EXISTS</p>');
-        if (window.calendar.schedulingButton) {
-          document.write('<p style="color: green;">DEBUG: schedulingButton EXISTS</p>');
-          window.calendar.schedulingButton.load({
-            target: document.getElementById('cal'),
-            url: 'https://cal.com/wbgrds/hotline',
-            label: 'Termin',
-            color: '#039BE5'
-          });
-        }
-      } else {
-        document.write('<p style="color: red;">DEBUG: window.calendar MISSING</p>');
-      }
-    </script>
   </body>
 </html>
