@@ -15,9 +15,7 @@
           <a href="https://1018.3cx.cloud/callus/#olaf" target="_blank" rel="noopener">
             Kontakt
           </a>
-          <button id="nav-termin" class="nav-btn" onclick="openScheduling()">
-            Termin
-          </button>
+          <div id="cal-nav"></div>
         </div>
       </div>
     </nav>
@@ -27,7 +25,7 @@
         <div class="header-text">
           <h1>Olaf Scharfenberg</h1>
           <p>IT-Techniker & Gründer</p>
-          <button class="cta" onclick="openScheduling()">Rückruf vereinbaren</button>
+          <div id="cal-header"></div>
         </div>
         <div class="header-image">
           <img src="olafscharfenberg.png" alt="Olaf Scharfenberg" />
@@ -50,34 +48,38 @@
         <a href="https://1018.3cx.cloud/callus/#olaf" target="_blank" rel="noopener">
           Kontakt
         </a>
-        <button onclick="openScheduling()" style="background: none; border: none; color: inherit; cursor: pointer; text-decoration: inherit;">
-          Kalender
-        </button>
+        <div id="cal-footer"></div>
       </div>
     </footer>
 
     <!-- Google Calendar Appointment Scheduling -->
     <script src="includes/plugins/google/scheduling-button-script.js" defer></script>
-    <div id="cal"></div>
 
     <script>
       window.addEventListener('load', function() {
         if (window.calendar && window.calendar.schedulingButton) {
           window.calendar.schedulingButton.load({
-            target: document.getElementById('cal'),
+            target: document.getElementById('cal-nav'),
             url: 'https://cal.com/wbgrds/hotline',
-            label: 'Rückruftermin',
+            label: 'Termin',
+            color: '#039BE5'
+          });
+
+          window.calendar.schedulingButton.load({
+            target: document.getElementById('cal-header'),
+            url: 'https://cal.com/wbgrds/hotline',
+            label: 'Rückruf vereinbaren',
+            color: '#039BE5'
+          });
+
+          window.calendar.schedulingButton.load({
+            target: document.getElementById('cal-footer'),
+            url: 'https://cal.com/wbgrds/hotline',
+            label: 'Kalender',
             color: '#039BE5'
           });
         }
       });
-
-      function openScheduling() {
-        const button = document.querySelector('.qxCTlb');
-        if (button) {
-          button.click();
-        }
-      }
     </script>
   </body>
 </html>
